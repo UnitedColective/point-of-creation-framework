@@ -171,7 +171,7 @@ Self-Governance. Independent Research. https://github.com/UnitedColective/potent
 
 ## Zenodo Archive
 
-**Concept DOI (all versions)**: [10.5281/zenodo.20954700](10.5281/zenodo.20954700)  
+**Concept DOI (all versions)**: [10.5281/zenodo.20954700](https://doi.org/10.5281/zenodo.20954700)  
 **GitHub Repository**: https://github.com/UnitedColective/potential-adventure  
 **Status**: v2 Preprint (submitted for academic review)
 
