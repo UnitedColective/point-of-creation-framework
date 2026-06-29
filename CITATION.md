@@ -13,7 +13,7 @@ https://github.com/UnitedColective/potential-adventure
 
 **BibTeX:**
 ```bibtex
-@software{Sterling 2026pcf,
+@software{Sterling2026pcf,
   author = {Sterling, A.M.},
   title = {The Point of Creation: A Unified Framework for Generative Self-Governance},
   year = {2026},
