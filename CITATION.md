@@ -6,15 +6,15 @@ If you use the Point of Creation Framework in your research, please cite:
 
 **APA:**
 ```
-Sterling A..M. (2026). The Point of Creation: A Unified Framework for Generative 
+Sterling A.M. (2026). The Point of Creation: A Unified Framework for Generative 
 Self-Governance. Independent Research. 
 https://github.com/UnitedColective/potential-adventure
 ```
 
 **BibTeX:**
 ```bibtex
-@software{Sterling 2026 pcf,
-  author = {Sterling, A.M.}
+@software{Sterling 2026pcf,
+  author = {Sterling, A.M.},
   title = {The Point of Creation: A Unified Framework for Generative Self-Governance},
   year = {2026},
   url = {https://github.com/UnitedColective/potential-adventure},
