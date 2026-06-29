@@ -155,7 +155,7 @@ Contributions are welcome! Please see CONTRIBUTING.md for:
 
 **APA:**
 ```
-Balderas, A. (2024). The Point of Creation: A Unified Framework for Generative 
+Sterling, A.M. (2024). The Point of Creation: A Unified Framework for Generative 
 Self-Governance. Independent Research. https://github.com/UnitedColective/potential-adventure
 ```
 
