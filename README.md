@@ -163,15 +163,15 @@ Self-Governance. Independent Research. https://github.com/UnitedColective/potent
 ```bibtex
 @software{balderas2024pcf,
   title={The Point of Creation: A Unified Framework for Generative Self-Governance},
-  author={Balderas, AnnMarie},
-  year={2024},
+  author={Sterling, A.M.},
+  year={2026},
   url={https://github.com/UnitedColective/potential-adventure}
 }
 ```
 
 ## Zenodo Archive
 
-**Concept DOI (all versions)**: [10.5281/zenodo.20954701](https://doi.org/10.5281/zenodo.20954701)  
+**Concept DOI (all versions)**: [10.5281/zenodo.20954700](https://doi.org/10.5281/zenodo.20954701)  
 **GitHub Repository**: https://github.com/UnitedColective/potential-adventure  
 **Status**: v2 Preprint (submitted for academic review)
 
