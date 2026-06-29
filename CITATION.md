@@ -6,7 +6,7 @@ If you use the Point of Creation Framework in your research, please cite:
 
 **APA:**
 ```
-Sterling A.M. (2026). The Point of Creation: A Unified Framework for Generative 
+Sterling, A.M. (2026). The Point of Creation: A Unified Framework for Generative 
 Self-Governance. Independent Research. 
 https://github.com/UnitedColective/potential-adventure
 ```
