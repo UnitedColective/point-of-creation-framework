@@ -8,7 +8,7 @@ If you use the Point of Creation Framework in your research, please cite:
 ```
 Sterling, A.M. (2026). The Point of Creation: A Unified Framework for Generative 
 Self-Governance. Independent Research. 
-https://github.com/UnitedColective/potential-adventure
+https://github.com/UnitedColective/point-of-creation-framework
 ```
 
 **BibTeX:**
@@ -17,14 +17,14 @@ https://github.com/UnitedColective/potential-adventure
   author = {Sterling, A.M.},
   title = {The Point of Creation: A Unified Framework for Generative Self-Governance},
   year = {2026},
-  url = {https://github.com/UnitedColective/potential-adventure},
+  url = https://github.com/UnitedColective/point-of-creation-framework.
   note = {Independent Research}
 }
 ```
 
 **MLA:** Sterling, A.M. "The Point of Creation: A Unified Framework for Generative 
 Self-Governance." GitHub, 2026, 
-https://github.com/UnitedColective/potential-adventure.
+https://github.com/UnitedColective/point-of-creation-framework
 ```
 
 ---
