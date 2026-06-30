@@ -1,6 +1,6 @@
 # The Point of Creation: A Unified Framework for Generative Self-Governance
 
-**AnnMarie Balderas**  
+**Sterling A.M.**  
 Independent Researcher  
 ucroutreach@proton.me
 
