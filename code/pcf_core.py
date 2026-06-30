@@ -1,10 +1,11 @@
+
 """
 Point of Creation Framework (PCF) - Core Implementation
 
 This module provides the fundamental tools for computing the PCF metric
 across any time series data.
 
-Author: Inspired by AnnMarie Balderas
+Author: A.M. Sterling
 License: MIT
 """
 
@@ -59,7 +60,7 @@ def lag_1_autocorrelation(X: np.ndarray) -> float:
     return c1 / c0 if c0 != 0 else np.nan
 
 
-def compute_pcf(X: np.ndarray, ci: float = 0.95, 
+def compute_pcf(X: np.ndarray, ci: float = 0.95,
                 n_bootstrap: int = 1000, block_method: str = 'stationary') -> Dict:
     """
     Compute the Point of Creation Framework metric.
@@ -102,8 +103,10 @@ def compute_pcf(X: np.ndarray, ci: float = 0.95,
     # Define white-noise floor
     WHITE_NOISE_FLOOR = -2/3
     
-    # Compute PCF metric
-    delta = rho1 + WHITE_NOISE_FLOOR
+    # Compute PCF metric: δ = ρ₁(Δ²X) + 2/3
+    # FIX: delta = rho1 - WHITE_NOISE_FLOOR (i.e. rho1 + 2/3)
+    # White noise has ρ₁ ≈ -2/3, so δ ≈ 0 as expected
+    delta = rho1 - WHITE_NOISE_FLOOR
     
     # Bootstrap confidence interval
     ci_lower, ci_upper = _bootstrap_ci(X, ci, n_bootstrap, block_method)
@@ -121,7 +124,7 @@ def compute_pcf(X: np.ndarray, ci: float = 0.95,
     }
 
 
-def _bootstrap_ci(X: np.ndarray, ci: float, n_bootstrap: int, 
+def _bootstrap_ci(X: np.ndarray, ci: float, n_bootstrap: int,
                   block_method: str) -> Tuple[float, float]:
     """
     Compute bootstrap confidence interval for PCF metric.
@@ -142,15 +145,14 @@ def _bootstrap_ci(X: np.ndarray, ci: float, n_bootstrap: int,
     
     for _ in range(n_bootstrap):
         if block_method == 'stationary':
-            # Stationary block bootstrap
             X_boot = _stationary_block_bootstrap(X, block_size)
         else:
-            # Moving block bootstrap
             X_boot = _moving_block_bootstrap(X, block_size)
         
         d2_boot = compute_second_difference(X_boot)
         rho1_boot = lag_1_autocorrelation(d2_boot)
-        delta_boot = rho1_boot - 2/3
+        # FIX: delta = rho1 + 2/3 (consistent with compute_pcf)
+        delta_boot = rho1_boot + 2/3
         deltas.append(delta_boot)
     
     deltas = np.array(deltas)
@@ -202,20 +204,18 @@ def test_against_white_noise(pcf_result: Dict, n_trials: int = 10000) -> Dict:
     WHITE_NOISE_FLOOR = -2/3
     observed_delta = pcf_result['delta']
     
-    # Generate white noise samples
     wn_deltas = []
     for _ in range(n_trials):
         wn = np.random.randn(pcf_result['n_samples'])
         d2_wn = compute_second_difference(wn)
         rho1_wn = lag_1_autocorrelation(d2_wn)
-        delta_wn = rho1_wn + WHITE_NOISE_FLOOR
+        delta_wn = rho1_wn - WHITE_NOISE_FLOOR
         wn_deltas.append(delta_wn)
     
     wn_deltas = np.array(wn_deltas)
     mean_wn = np.mean(wn_deltas)
     std_wn = np.std(wn_deltas)
     
-    # Z-score
     z_score = (observed_delta - mean_wn) / std_wn if std_wn > 0 else 0
     p_value = 2 * (1 - stats.norm.cdf(np.abs(z_score)))
     
@@ -243,7 +243,6 @@ def detrend_series(X: np.ndarray, method: str = 'linear') -> np.ndarray:
     if method == 'linear':
         return stats.detrend(X)
     elif method == 'polynomial':
-        # Remove polynomial trend
         coeffs = np.polyfit(np.arange(len(X)), X, 2)
         trend = np.polyval(coeffs, np.arange(len(X)))
         return X - trend
@@ -251,7 +250,7 @@ def detrend_series(X: np.ndarray, method: str = 'linear') -> np.ndarray:
         raise ValueError("method must be 'linear' or 'polynomial'")
 
 
-def windowed_pcf(X: np.ndarray, window_size: int, 
+def windowed_pcf(X: np.ndarray, window_size: int,
                  step_size: int = None) -> List[Dict]:
     """
     Compute PCF over sliding windows.
@@ -285,25 +284,24 @@ if __name__ == "__main__":
     print("Point of Creation Framework - Core Module")
     print("=" * 50)
     
-    # Generate sample data
     np.random.seed(42)
     
     # Test 1: White noise (δ should be ≈ 0)
     print("\nTest 1: Pure White Noise")
     wn = np.random.randn(5000)
     result_wn = compute_pcf(wn)
-    print(f"  δ = {result_wn['delta']:.4f}")
+    print(f"  δ = {result_wn['delta']:.4f}  (expect ≈ 0)")
     print(f"  95% CI: [{result_wn['ci_lower']:.4f}, {result_wn['ci_upper']:.4f}]")
     print(f"  Above floor: {result_wn['above_floor']}")
     
-    # Test 2: AR(1) process with positive autocorrelation (δ should be > 0)
+    # Test 2: AR(1) process (δ should be > 0)
     print("\nTest 2: AR(1) Process (ρ = 0.7)")
     ar1 = np.zeros(5000)
     ar1[0] = np.random.randn()
     for t in range(1, len(ar1)):
         ar1[t] = 0.7 * ar1[t-1] + np.random.randn()
     result_ar1 = compute_pcf(ar1)
-    print(f"  δ = {result_ar1['delta']:.4f}")
+    print(f"  δ = {result_ar1['delta']:.4f}  (expect > 0)")
     print(f"  95% CI: [{result_ar1['ci_lower']:.4f}, {result_ar1['ci_upper']:.4f}]")
     print(f"  Above floor: {result_ar1['above_floor']}")
     
