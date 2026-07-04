@@ -5,7 +5,7 @@ This script analyzes commitment times from rodent perceptual decision-making exp
 The core question: Do commitment decisions show evidence of generative self-governance
 (δ > 0) or collapse to white-noise floor (δ ≈ 0)?
 
-Author: Adapted for PCF analysis
+Author: A.M. Sterling
 License: MIT
 """
 

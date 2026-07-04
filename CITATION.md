@@ -17,7 +17,7 @@ https://github.com/UnitedColective/point-of-creation-framework
   author = {Sterling, A.M.},
   title = {The Point of Creation: A Unified Framework for Generative Self-Governance},
   year = {2026},
-  url = https://github.com/UnitedColective/point-of-creation-framework.
+  url = {https://github.com/UnitedColective/point-of-creation-framework},
   note = {Independent Research}
 }
 ```
@@ -25,7 +25,6 @@ https://github.com/UnitedColective/point-of-creation-framework
 **MLA:** Sterling, A.M. "The Point of Creation: A Unified Framework for Generative 
 Self-Governance." GitHub, 2026, 
 https://github.com/UnitedColective/point-of-creation-framework
-```
 
 ---
 
